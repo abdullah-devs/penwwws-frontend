@@ -42,14 +42,14 @@ export default function Footer() {
             <ul className="mt-2 flex flex-col gap-2">
               <li>
                 <Link
-                  href="#features"
+                  href="/#features"
                   className="text-white/80 hover:text-white"
                 >
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="#faq" className="text-white/80 hover:text-white">
+                <Link href="/#faq" className="text-white/80 hover:text-white">
                   Q&A
                 </Link>
               </li>
