@@ -84,7 +84,7 @@ const Notification = ({
   return (
     <figure
       className={cn(
-        "relative mx-auto min-h-fit w-full max-w-[400px] cursor-pointer overflow-hidden rounded-2xl p-4",
+        "relative mx-auto min-h-fit w-full max-w-[400px] overflow-hidden rounded-2xl p-4",
         // animation styles
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
         // light styles
@@ -144,7 +144,7 @@ export default function Features() {
                   <figure
                     key={index}
                     className={cn(
-                      "relative h-64 w-44 cursor-pointer overflow-hidden rounded-xl border p-4",
+                      "relative h-64 w-44 overflow-hidden rounded-xl border p-4",
                       "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
                       "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
                       "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none",
