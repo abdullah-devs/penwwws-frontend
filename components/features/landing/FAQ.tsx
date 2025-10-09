@@ -42,12 +42,6 @@ export default function FAQ() {
               easy for anyone to use.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-4">
-            <AccordionTrigger className="text-xl font-semibold">
-              How secure is my data?
-            </AccordionTrigger>
-            <AccordionContent className="pb-4 pl-7"></AccordionContent>
-          </AccordionItem>
         </Accordion>
       </section>
     </>
