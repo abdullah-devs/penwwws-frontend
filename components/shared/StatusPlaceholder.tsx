@@ -6,7 +6,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import clsx from "clsx";
 
 type Props = {
   title: string;
@@ -30,14 +29,12 @@ export function StatusPlaceholder({
   variant = "default",
 }: Props) {
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2">
       <Empty>
         <EmptyHeader>
           <EmptyMedia
             variant="icon"
-            className={clsx(
-              `bg-${VARIANT_COLORS[variant]}/15 text-${VARIANT_COLORS[variant]} h-14 w-14`,
-            )}
+            className={`bg-${VARIANT_COLORS[variant]}/15 text-${VARIANT_COLORS[variant]} h-14 w-14`}
           >
             {icon}
           </EmptyMedia>
