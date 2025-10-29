@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Toaster } from "@/components/ui/toaster";
 import TanstackQueryProvider from "@/providers/TanstackQueryProvider";
+import NProgressProvider from "@/providers/ProgressBarProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,10 +32,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <TanstackQueryProvider>
-          <Toaster />
-          {children}
-        </TanstackQueryProvider>
+        <NProgressProvider>
+          <TanstackQueryProvider>
+            <Toaster />
+            {children}
+          </TanstackQueryProvider>
+        </NProgressProvider>
       </body>
     </html>
   );
