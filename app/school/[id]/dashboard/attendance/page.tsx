@@ -25,7 +25,7 @@ export default async function AttendancePage({
   let isError = false;
 
   try {
-    const res = await axios.get(`/schol/${schoolId}/device`, {
+    const res = await axios.get(`/school/${schoolId}/device`, {
       headers: { Authorization: token },
     });
     credentials = res.data;
