@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -6,15 +5,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { SessionType } from "@/types/session";
-import SessionAttendersTable from "./SessionAttendanceTable";
+import { Button } from "@/components/ui/button";
+import SessionAttendersTable from "@/components/features/subject/tabs/attendance/SessionAttendanceTable";
+
 import axios from "@/lib/axiosInstance";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
+import { SessionType } from "@/types/session";
 
-import { SessionAttenderType } from "@/types/SessionAttenerType";
+import { SessionAttenderType } from "@/types/SessionAttenderType";
 
-export async function getMembers(
+export async function getAttenders(
   schoolId: string,
   subjectId: number,
   sessionId: number,
@@ -39,7 +40,7 @@ export default async function AttendanceDetail({
   subjectId,
   session,
 }: Props) {
-  const members: SessionAttenderType[] = await getMembers(
+  const attenders: SessionAttenderType[] = await getAttenders(
     schoolId,
     subjectId,
     session.id,
@@ -63,7 +64,7 @@ export default async function AttendanceDetail({
           session={session}
           subjectId={subjectId}
           schoolId={schoolId}
-          data={members}
+          data={attenders}
         />
       </DialogContent>
     </Dialog>

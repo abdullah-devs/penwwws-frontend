@@ -1,5 +1,9 @@
 "use client";
 
+import { AlignJustify, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import GroupTable from "@/components/features/dashboard/groups/GroupTable";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,22 +11,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { AlignJustify, Users } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+
 import { GroupType } from "@/types/Group";
-import GroupTable from "@/components/features/dashboard/groups/GroupTable";
-import { MemberType } from "@/types/member";
-import { Button } from "@/components/ui/button";
 import { formatNumber } from "@/lib/utils";
 
 type Props = {
   schoolId: string;
   group: GroupType;
-  data: MemberType[];
 };
 
-export default function GroupDetails({ schoolId, group, data }: Props) {
+export default function GroupDetails({ schoolId, group }: Props) {
   const memberCount = formatNumber(group._count.members);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -45,7 +45,7 @@ export default function GroupDetails({ schoolId, group, data }: Props) {
           </DialogTitle>
         </DialogHeader>
         <div className="w-full overflow-scroll p-1">
-          <GroupTable schoolId={schoolId} group={group} data={data} />
+          <GroupTable schoolId={schoolId} group={group} />
         </div>
       </DialogContent>
     </Dialog>

@@ -16,18 +16,19 @@ type Props = {
   variant?: "default" | "destructive" | "warning";
 };
 
-export function EmptyState({
+const VARIANT_COLORS = {
+  default: "primary",
+  destructive: "destructive",
+  warning: "amber-600",
+} as const;
+
+export function StatusPlaceholder({
   title,
   description,
   icon,
   action,
   variant = "default",
 }: Props) {
-  const variantColors = {
-    default: "primary",
-    destructive: "destructive",
-    warning: "amber-600",
-  };
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <Empty>
@@ -35,12 +36,12 @@ export function EmptyState({
           <EmptyMedia
             variant="icon"
             className={clsx(
-              `bg-${variantColors[variant]}/15 text-${variantColors[variant]} h-14 w-14`,
+              `bg-${VARIANT_COLORS[variant]}/15 text-${VARIANT_COLORS[variant]} h-14 w-14`,
             )}
           >
             {icon}
           </EmptyMedia>
-          <EmptyTitle className={`text-${variantColors[variant]} text-2xl`}>
+          <EmptyTitle className={`text-${VARIANT_COLORS[variant]} text-2xl`}>
             {title}
           </EmptyTitle>
           <EmptyDescription>{description}</EmptyDescription>

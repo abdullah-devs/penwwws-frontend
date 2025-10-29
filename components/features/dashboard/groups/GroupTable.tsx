@@ -1,13 +1,12 @@
 "use client";
 
-import { DataTable } from "@/components/shared/DataTable";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import { DataTable } from "@/components/shared/DataTable";
 import { GetColumns } from "@/components/shared/columns";
-import { MemberType } from "@/types/member";
-import { GroupType } from "@/types/Group";
 import AssignGroup from "@/components/shared/AssignGroup";
 import UnassignGroup from "@/components/shared/UnassignGroup";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,14 +18,21 @@ import {
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal } from "lucide-react";
 
+import { getMembers } from "@/fetches/member-client";
+import { GroupType } from "@/types/Group";
+import { MemberType } from "@/types/member";
+
 type Props = {
-  data: MemberType[];
   schoolId: string;
   group: GroupType;
 };
 
-export default function GroupTable({ group, schoolId, data }: Props) {
+export default function GroupTable({ group, schoolId }: Props) {
   const [selectedMemberIds, setSelectedMemberIds] = useState<number[]>([]);
+  const { data, isLoading, isError } = useQuery<MemberType[]>({
+    queryKey: ["members"],
+    queryFn: () => getMembers(schoolId),
+  });
 
   const columns = GetColumns((member) => (
     <DropdownMenu>
@@ -61,30 +67,38 @@ export default function GroupTable({ group, schoolId, data }: Props) {
       </DropdownMenuContent>
     </DropdownMenu>
   ));
-
+  //TODO: add loading and error state
+  if (isLoading) {
+    return <div>loading</div>;
+  }
+  if (isError) {
+    return <div>error occured</div>;
+  }
   return (
-    <DataTable
-      setSelectedMemberIds={setSelectedMemberIds}
-      columns={columns}
-      data={data}
-      defaultFilteredGroupIds={[group.id]}
-      schoolId={schoolId}
-      defaultFilteredRole="STUDENT"
-    >
-      <>
-        <AssignGroup
-          schoolId={schoolId}
-          selectedMemberIds={selectedMemberIds}
-          assignGroupMode="single"
-          groupId={group.id}
-        />
-        <UnassignGroup
-          schoolId={schoolId}
-          selectedMemberIds={selectedMemberIds}
-          unassignGroupMode="single"
-          groupId={group.id}
-        />
-      </>
-    </DataTable>
+    data && (
+      <DataTable
+        setSelectedMemberIds={setSelectedMemberIds}
+        columns={columns}
+        data={data}
+        defaultFilteredGroupIds={[group.id]}
+        schoolId={schoolId}
+        defaultFilteredRole="STUDENT"
+      >
+        <>
+          <AssignGroup
+            schoolId={schoolId}
+            selectedMemberIds={selectedMemberIds}
+            assignGroupMode="single"
+            groupId={group.id}
+          />
+          <UnassignGroup
+            schoolId={schoolId}
+            selectedMemberIds={selectedMemberIds}
+            unassignGroupMode="single"
+            groupId={group.id}
+          />
+        </>
+      </DataTable>
+    )
   );
 }

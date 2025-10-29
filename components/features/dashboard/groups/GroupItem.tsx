@@ -3,21 +3,20 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { GroupType } from "@/types/Group";
 import { Users } from "lucide-react";
 import GroupDetails from "@/components/features/dashboard/groups/GroupDetails";
 import DeleteGroup from "@/components/features/dashboard/groups/DeleteGroup";
-import { MemberType } from "@/types/member";
 import EditGroup from "@/components/features/dashboard/groups/EditGroup";
+
+import { GroupType } from "@/types/Group";
 
 type Props = {
   group: GroupType;
-  data: MemberType[];
   schoolId: string;
   groups: GroupType[];
 };
 
-export default function GroupItem({ group, data, schoolId, groups }: Props) {
+export default function GroupItem({ group, schoolId, groups }: Props) {
   const hasChildren = group.children && group.children.length > 0;
 
   return (
@@ -38,7 +37,7 @@ export default function GroupItem({ group, data, schoolId, groups }: Props) {
                 {" "}
                 <DeleteGroup schoolId={schoolId} group={group} />
                 <EditGroup schoolId={schoolId} group={group} groups={groups} />
-                <GroupDetails schoolId={schoolId} data={data} group={group} />
+                <GroupDetails schoolId={schoolId} group={group} />
               </>
             </div>
           </div>
@@ -49,7 +48,6 @@ export default function GroupItem({ group, data, schoolId, groups }: Props) {
                 <GroupItem
                   key={child.id}
                   group={child}
-                  data={data}
                   schoolId={schoolId}
                   groups={groups}
                 />
@@ -65,7 +63,7 @@ export default function GroupItem({ group, data, schoolId, groups }: Props) {
           <div className="flex items-center gap-2 lg:opacity-0 lg:group-hover:opacity-100">
             <DeleteGroup schoolId={schoolId} group={group} />
             <EditGroup schoolId={schoolId} group={group} groups={groups} />
-            <GroupDetails schoolId={schoolId} data={data} group={group} />
+            <GroupDetails schoolId={schoolId} group={group} />
           </div>
         </div>
       )}

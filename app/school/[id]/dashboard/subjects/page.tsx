@@ -1,11 +1,13 @@
-import AddSubject from "@/components/features/dashboard/subjects/AddSubject";
-import { LibraryBig } from "lucide-react";
-import { EmptyState } from "@/components/shared/StatusPlaceholder";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import axios from "@/lib/axiosInstance";
-import { SubjectType } from "@/types/Subject";
+
 import SubjectCard from "@/components/features/dashboard/subjects/SubjectCard";
+import { StatusPlaceholder } from "@/components/shared/StatusPlaceholder";
+import AddSubject from "@/components/features/dashboard/subjects/AddSubject";
+import { LibraryBig } from "lucide-react";
+
+import { SubjectType } from "@/types/Subject";
 
 export default async function SubjectsPage({
   params,
@@ -13,7 +15,6 @@ export default async function SubjectsPage({
   params: Promise<{ id: string }>;
 }) {
   const schoolId = (await params).id;
-
   const token = await getCookie("token", { cookies });
 
   let subjects: SubjectType[] = [];
@@ -23,10 +24,7 @@ export default async function SubjectsPage({
     const res = await axios.get(`/school/${schoolId}/subject`, {
       headers: { Authorization: token },
     });
-
-    if (res.status === 200) {
-      subjects = res.data;
-    }
+    subjects = res.data;
   } catch {
     isError = true;
   }
@@ -39,7 +37,7 @@ export default async function SubjectsPage({
       </div>
 
       {isError && (
-        <EmptyState
+        <StatusPlaceholder
           title="Couldn't Fetch Subjects"
           description="something went wrong and we could not get the subjects, please refresh or try again later"
           icon={<LibraryBig />}
@@ -48,7 +46,7 @@ export default async function SubjectsPage({
       )}
 
       {subjects.length === 0 && !isError ? (
-        <EmptyState
+        <StatusPlaceholder
           title="No subjects yet"
           description="You haven't created any subjects yet. Get started by creating your first subject."
           action={<AddSubject schoolId={schoolId} />}
