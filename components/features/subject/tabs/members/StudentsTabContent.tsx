@@ -3,7 +3,7 @@
 import { DataTable, ResetSelectionType } from "@/components/shared/DataTable";
 import { SubjectDetailType } from "@/types/Subject";
 import { useRef, useState } from "react";
-import UnassignSubject from "@/components/features/subject/UnassignSubject";
+import UnassignSubject from "@/components/features/subject/tabs/members/UnassignSubject";
 import { GetColumns } from "@/components/shared/columns";
 import {
   DropdownMenu,

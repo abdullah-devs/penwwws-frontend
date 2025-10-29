@@ -2,8 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import axios from "@/lib/axiosInstance";
+import { AxiosError } from "axios";
+import { getCookie } from "cookies-next";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { DateTimePicker } from "@/components/shared/DateTimePicker";
+import { LoaderCircle as SpinnerIcon, Plus } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -12,14 +22,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { LoaderCircle as SpinnerIcon } from "lucide-react";
-import { Plus } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import axios from "@/lib/axiosInstance";
-import { getCookie } from "cookies-next";
 import {
   Form,
   FormControl,
@@ -28,8 +30,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { AxiosError } from "axios";
-import { DateTimePicker } from "@/components/shared/DateTimePicker";
 
 const addSessionSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),

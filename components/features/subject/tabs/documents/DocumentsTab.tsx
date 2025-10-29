@@ -1,6 +1,6 @@
 import { SubjectDetailType } from "@/types/Subject";
-import AddTopic from "@/components/features/subject/AddTopic";
-import TopicsList from "@/components/features/subject/TopicsList";
+import AddTopic from "@/components/features/subject/tabs/documents/AddTopic";
+import TopicsList from "@/components/features/subject/tabs/documents/TopicsList";
 import { SchoolUserType } from "@/types/SchoolUser";
 
 import { getCookie } from "cookies-next";

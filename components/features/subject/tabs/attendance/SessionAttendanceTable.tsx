@@ -2,7 +2,7 @@
 
 import { TableSearch } from "@/components/shared/TableSearch";
 import { SessionType } from "@/types/session";
-import RemoveAttender from "@/components/features/subject/RemoveAttender";
+import RemoveAttender from "@/components/features/subject/tabs/attendance/RemoveAttender";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,

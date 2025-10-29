@@ -11,9 +11,9 @@ import { SchoolUserType } from "@/types/SchoolUser";
 import { TopicType } from "@/types/Topic";
 import { useState } from "react";
 import TopicTitle from "./TopicTitle";
-import DeleteTopic from "@/components/features/subject/DeleteTopic";
-import DocumentItem from "@/components/features/subject/DocumentItem";
-import UploadDocument from "@/components/features/subject/UploadDocument";
+import DeleteTopic from "@/components/features/subject/tabs/documents/DeleteTopic";
+import DocumentItem from "@/components/features/subject/tabs/documents/DocumentItem";
+import UploadDocument from "@/components/features/subject/tabs/documents/UploadDocument";
 
 type Props = {
   topics: TopicType[];
