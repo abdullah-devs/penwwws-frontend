@@ -39,7 +39,7 @@ export default async function SubjectsPage({
       {isError && (
         <StatusPlaceholder
           title="Couldn't Fetch Subjects"
-          description="something went wrong and we could not get the subjects, please refresh or try again later"
+          description="Something went wrong and we could not get the subjects, please refresh or try again later."
           icon={<LibraryBig />}
           variant="destructive"
         />

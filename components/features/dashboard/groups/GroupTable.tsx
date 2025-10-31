@@ -16,11 +16,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, Users } from "lucide-react";
+import { LoaderCircle as SpinnerIcon } from "lucide-react";
 
 import { getMembers } from "@/fetches/member-client";
 import { GroupType } from "@/types/Group";
 import { MemberType } from "@/types/member";
+import { StatusPlaceholder } from "@/components/shared/StatusPlaceholder";
 
 type Props = {
   schoolId: string;
@@ -67,12 +69,21 @@ export default function GroupTable({ group, schoolId }: Props) {
       </DropdownMenuContent>
     </DropdownMenu>
   ));
-  //TODO: add loading and error state
+
   if (isLoading) {
-    return <div>loading</div>;
+    return (
+      <SpinnerIcon className="text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin" />
+    );
   }
   if (isError) {
-    return <div>error occured</div>;
+    return (
+      <StatusPlaceholder
+        title="Couldn't Fetch Members"
+        description="Something went wrong and we could not get the members, please refresh or try again later."
+        icon={<Users />}
+        variant="destructive"
+      />
+    );
   }
   return (
     data && (
@@ -82,7 +93,6 @@ export default function GroupTable({ group, schoolId }: Props) {
         data={data}
         defaultFilteredGroupIds={[group.id]}
         schoolId={schoolId}
-        defaultFilteredRole="STUDENT"
       >
         <>
           <AssignGroup

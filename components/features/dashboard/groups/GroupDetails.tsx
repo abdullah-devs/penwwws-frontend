@@ -1,6 +1,6 @@
 "use client";
 
-import { AlignJustify, Users } from "lucide-react";
+import { Eye, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import GroupTable from "@/components/features/dashboard/groups/GroupTable";
 import { Button } from "@/components/ui/button";
@@ -26,21 +26,18 @@ export default function GroupDetails({ schoolId, group }: Props) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          className="bg-blue-800/10 text-blue-800 hover:bg-blue-800/15"
-          size="sm"
-          variant="outline"
-        >
-          <AlignJustify size={20} />
+        <Button variant="ghost" className="w-full justify-start font-normal">
+          <Eye />
+          View
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[60rem]">
+      <DialogContent className="min-h-96 max-w-240">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-4">
-            {group.name}{" "}
+            {group.name}
             <Badge variant="outline" className="text-sm">
               <Users className="text-primary" />
-              {memberCount} <span>member(s)</span>
+              {memberCount} <span>members</span>
             </Badge>
           </DialogTitle>
         </DialogHeader>

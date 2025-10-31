@@ -18,7 +18,7 @@ type Props = {
 const VARIANT_COLORS = {
   default: "primary",
   destructive: "destructive",
-  warning: "amber-600",
+  warning: "amber-700",
 } as const;
 
 export function StatusPlaceholder({

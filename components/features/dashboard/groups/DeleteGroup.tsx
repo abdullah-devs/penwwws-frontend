@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+
 import {
   Dialog,
   DialogDescription,
@@ -14,8 +16,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { GroupType } from "@/types/Group";
-import { Trash2, LoaderCircle } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
+import { LoaderCircle, Trash2 } from "lucide-react";
+
 import axios from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
 import { getCookie } from "cookies-next";
@@ -64,10 +66,11 @@ export default function DeleteGroup({ schoolId, group }: Props) {
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTrigger asChild>
         <Button
-          size="sm"
-          className="bg-destructive/10 text-destructive hover:bg-destructive/15"
+          variant="ghost"
+          className="text-destructive hover:text-destructive w-full justify-start font-normal"
         >
-          <Trash2 size={20} />
+          <Trash2 />
+          Delete
         </Button>
       </DialogTrigger>
       <DialogContent>

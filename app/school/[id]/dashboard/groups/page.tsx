@@ -42,7 +42,7 @@ export default async function GroupsPage({
       {isError && (
         <StatusPlaceholder
           title="Couldn't Fetch Groups"
-          description="something went wrong and we could not get the groups, please refresh or try again later."
+          description="Something went wrong and we could not get the groups, please refresh or try again later."
           icon={<Users />}
           variant="destructive"
         />

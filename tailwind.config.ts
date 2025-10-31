@@ -8,6 +8,7 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   plugins: [await import("tailwindcss-animate")],
+
   theme: {
     extend: {
       colors: {

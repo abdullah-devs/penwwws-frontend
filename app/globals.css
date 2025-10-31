@@ -3,6 +3,8 @@
 
 @plugin 'tailwindcss-animate';
 
+@source inline("bg-amber-700 text-amber-700");
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
