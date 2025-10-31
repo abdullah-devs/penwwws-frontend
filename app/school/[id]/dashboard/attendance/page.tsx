@@ -53,8 +53,8 @@ export default async function AttendancePage({
 
       {credentials.length === 0 && !isError ? (
         <StatusPlaceholder
-          title="No Credentials Created yet"
-          description="You haven't created any credential yet. Set up your attendance devices by creating your first credential."
+          title="No Credentials Created"
+          description="You haven't created any credentials. Set up your attendance devices by creating your first credential."
           icon={<Fingerprint />}
           action={<CreateAttendanceCredential schoolId={schoolId} />}
         />

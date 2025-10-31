@@ -53,7 +53,7 @@ export default async function AttendanceDetail({
           {session._count.attenders} Attended
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[60rem]">
+      <DialogContent className="max-w-240">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-4">
             {session.name}

@@ -133,7 +133,7 @@ export default function SelectSchool({ setSchoolAction }: Props) {
               </div>
             </div>
 
-            <div className="text-accent rounded-full bg-amber-800 px-4 py-1 text-sm font-semibold opacity-90">
+            <div className="text-accent rounded-md bg-amber-800 px-4 py-1 text-sm font-semibold opacity-90">
               Pending
             </div>
           </div>

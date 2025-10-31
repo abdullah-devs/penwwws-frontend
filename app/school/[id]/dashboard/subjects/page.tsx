@@ -47,8 +47,8 @@ export default async function SubjectsPage({
 
       {subjects.length === 0 && !isError ? (
         <StatusPlaceholder
-          title="No subjects yet"
-          description="You haven't created any subjects yet. Get started by creating your first subject."
+          title="No subjects Created"
+          description="You haven't created any subjects, Get started by creating your first subject."
           action={<AddSubject schoolId={schoolId} />}
           icon={<LibraryBig />}
         />

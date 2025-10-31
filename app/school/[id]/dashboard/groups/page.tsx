@@ -50,7 +50,7 @@ export default async function GroupsPage({
 
       {groups.length === 0 && !isError ? (
         <StatusPlaceholder
-          title="No groups yet"
+          title="No groups Created"
           description="You haven't created any groups yet. Get started by creating your first group."
           action={<AddGroup groups={groups} schoolId={schoolId} />}
           icon={<Users />}
