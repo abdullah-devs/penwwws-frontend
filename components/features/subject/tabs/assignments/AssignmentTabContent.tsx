@@ -1,4 +1,4 @@
-import AddAssignment from "@/components/features/subject/AddAssignment";
+import AddAssignment from "@/components/features/subject/tabs/documents/AddAssignment";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import axios from "@/lib/axiosInstance";

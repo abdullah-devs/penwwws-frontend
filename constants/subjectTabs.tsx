@@ -1,11 +1,11 @@
-import AddSubjectMembersModal from "@/components/features/subject/AddSubjectMembersModal";
-import AssignmentTabContent from "@/components/features/subject/AssignmentTabContent";
-import AttendanceTabContent from "@/components/features/subject/AttendanceTabContent";
-import DocumentsTab from "@/components/features/subject/DocumentsTab";
-import GradesTabContent from "@/components/features/subject/GradesTabContent";
-import LogsTabContent from "@/components/features/subject/LogsTabContent";
-import MarksTabContent from "@/components/features/subject/MarksTabContent";
-import StudentsTabContent from "@/components/features/subject/StudentsTabContent";
+import AddSubjectMembersModal from "@/components/features/subject/tabs/members/AddSubjectMembersModal";
+import AssignmentTabContent from "@/components/features/subject/tabs/assignments/AssignmentTabContent";
+import AttendanceTabContent from "@/components/features/subject/tabs/attendance/AttendanceTabContent";
+import DocumentsTab from "@/components/features/subject/tabs/documents/DocumentsTab";
+import GradesTabContent from "@/components/features/subject/tabs/marks/GradesTabContent";
+import LogsTabContent from "@/components/features/subject/tabs/logs/LogsTabContent";
+import MarksTabContent from "@/components/features/subject/tabs/marks/MarksTabContent";
+import StudentsTabContent from "@/components/features/subject/tabs/members/StudentsTabContent";
 import { SchoolUserType } from "@/types/SchoolUser";
 import { SubjectDetailType } from "@/types/Subject";
 import {
@@ -31,7 +31,6 @@ export function getSubjectTabs(
         <DocumentsTab schoolId={schoolId} subject={subject} user={user} />
       ),
     },
-
     {
       value: "members",
       label: "Members",

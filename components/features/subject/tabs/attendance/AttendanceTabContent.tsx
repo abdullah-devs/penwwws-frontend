@@ -1,8 +1,8 @@
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import axios from "@/lib/axiosInstance";
-import AddSession from "@/components/features/subject/AddSession";
-import SessionsList from "@/components/features/subject/SessionsList";
+import AddSession from "@/components/features/subject/tabs/attendance/AddSession";
+import SessionsList from "@/components/features/subject/tabs/attendance/SessionsList";
 import { SessionType } from "@/types/session";
 import { SchoolUserType } from "@/types/SchoolUser";
 

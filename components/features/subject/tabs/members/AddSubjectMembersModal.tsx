@@ -9,7 +9,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getMembers } from "@/fetches/member";
 import { SubjectDetailType } from "@/types/Subject";
-import AssignSubjectTable from "@/components/features/subject/AssignSubjectTable";
+import AssignSubjectTable from "@/components/features/subject/tabs/members/AssignSubjectTable";
 
 type Props = {
   schoolId: string;

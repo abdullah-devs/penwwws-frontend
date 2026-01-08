@@ -1,10 +1,12 @@
 import { SessionType } from "@/types/session";
-import DeleteSession from "@/components/features/subject/DeleteSession";
-import AttendanceDetail from "@/components/features/subject/AttendanceDetail";
-import { SchoolUserType } from "@/types/SchoolUser";
-import { Badge } from "@/components/ui/badge";
-import EditSession from "./EditSession";
 import { format } from "date-fns";
+
+import DeleteSession from "@/components/features/subject/tabs/attendance/DeleteSession";
+import AttendanceDetail from "@/components/features/subject/tabs/attendance/AttendanceDetail";
+import EditSession from "@/components/features/subject/tabs/attendance/EditSession";
+import { Badge } from "@/components/ui/badge";
+
+import { SchoolUserType } from "@/types/SchoolUser";
 
 type Props = {
   schoolId: string;

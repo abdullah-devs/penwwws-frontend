@@ -9,9 +9,9 @@ import {
 } from "@/components/ui/table";
 import { SchoolUserType } from "@/types/SchoolUser";
 import clsx from "clsx";
-import DeleteRow from "./DeleteRow";
-import AddTableRow from "./AddTableRow";
-import EditRow from "./EditRow";
+import DeleteRow from "@/components/features/subject/tabs/marks/DeleteRow";
+import AddTableRow from "@/components/features/subject/tabs/marks/AddTableRow";
+import EditRow from "@/components/features/subject/tabs/marks/EditRow";
 
 export type TableRowType = {
   id: number;

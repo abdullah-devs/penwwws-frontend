@@ -7,8 +7,8 @@ import { FileText, SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { TopicType } from "@/types/Topic";
-import EditDocument from "@/components/features/subject/EditDocument";
-import DeleteDocument from "@/components/features/subject/DeleteDocument";
+import EditDocument from "@/components/features/subject/tabs/documents/EditDocument";
+import DeleteDocument from "@/components/features/subject/tabs/documents/DeleteDocument";
 
 type Props = {
   schoolId: string;
