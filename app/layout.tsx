@@ -36,7 +36,7 @@ export default function RootLayout({
         <TanstackQueryProvider>
           <Toaster />
           <Suspense fallback={null}>
-            <NProgressProvider> {children}</NProgressProvider>
+            <NProgressProvider>{children}</NProgressProvider>
           </Suspense>
         </TanstackQueryProvider>
       </body>
