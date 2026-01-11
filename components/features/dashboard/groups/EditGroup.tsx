@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+
 import {
   Dialog,
   DialogContent,
@@ -12,17 +14,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { LoaderCircle as SpinnerIcon, Pencil } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import axios from "@/lib/axiosInstance";
-import { getCookie } from "cookies-next";
 import { Form } from "@/components/ui/form";
-import { AxiosError } from "axios";
-import { useRouter } from "next/navigation";
-
-import { GroupType } from "@/types/Group";
+import { Button } from "@/components/ui/button";
 import GroupFormFields from "@/components/features/dashboard/groups/GroupFormFields";
+
+import axios from "@/lib/axiosInstance";
+import { AxiosError } from "axios";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { GroupFormData, groupSchema } from "@/lib/validations";
+import { getCookie } from "cookies-next";
+import { GroupType } from "@/types/Group";
 
 type Props = {
   schoolId: string;
@@ -85,11 +86,9 @@ export default function EditGroup({ schoolId, group, groups }: Props) {
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTrigger asChild>
-        <Button
-          size="sm"
-          className="bg-amber-800/10 text-amber-800 hover:bg-amber-800/15"
-        >
-          <Pencil size={10} />
+        <Button variant="ghost" className="w-full justify-start font-normal">
+          <Pencil />
+          Edit
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
@@ -111,7 +110,7 @@ export default function EditGroup({ schoolId, group, groups }: Props) {
               disabled={form.formState.isSubmitting}
               type="submit"
               size="sm"
-              className="w-full rounded-full font-semibold"
+              className="w-full font-semibold"
             >
               {form.formState.isSubmitting ? (
                 <SpinnerIcon className="animate-spin" />

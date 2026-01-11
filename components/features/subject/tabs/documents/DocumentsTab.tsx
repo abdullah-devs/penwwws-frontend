@@ -29,7 +29,7 @@ export default async function DocumentsTab({ schoolId, subject, user }: Props) {
     <div className="">
       {user.role !== "STUDENT" && (
         <div className="mt-6 flex items-center justify-between">
-          <h1 className="text-3xl font-bold">Topics</h1>
+          <h1 className="text-primary text-3xl font-bold">Topics</h1>
           <AddTopic schoolId={schoolId} subject={subject} />
         </div>
       )}

@@ -4,6 +4,8 @@ import "./globals.css";
 
 import { Toaster } from "@/components/ui/toaster";
 import TanstackQueryProvider from "@/providers/TanstackQueryProvider";
+import NProgressProvider from "@/providers/ProgressBarProvider";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +35,9 @@ export default function RootLayout({
       >
         <TanstackQueryProvider>
           <Toaster />
-          {children}
+          <Suspense fallback={null}>
+            <NProgressProvider>{children}</NProgressProvider>
+          </Suspense>
         </TanstackQueryProvider>
       </body>
     </html>

@@ -1,12 +1,11 @@
-"use client";
-
-import { AssignmentType } from "@/types/AssignmentType";
-import { FileText } from "lucide-react";
-import Link from "next/link";
-import { format } from "date-fns";
-import { Badge } from "@/components/ui/badge";
 import SubmitSubmission from "@/components/features/subject/tabs/assignments/SubmitSubmission";
 import DeleteSubmission from "@/components/features/subject/tabs/assignments/DeleteSubmission";
+import { FileText } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+
+import { AssignmentType } from "@/types/AssignmentType";
+import Link from "next/link";
+import { format } from "date-fns";
 import clsx from "clsx";
 
 type Props = {

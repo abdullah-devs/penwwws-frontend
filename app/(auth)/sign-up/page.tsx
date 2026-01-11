@@ -31,11 +31,11 @@ export default function SignupPage() {
           <SignupForm />
 
           <div className="flex w-full items-center">
-            <span className="bg-border h-0.5 flex-grow"></span>
+            <span className="bg-border h-0.5 grow"></span>
             <span className="text-muted-foreground m-1 text-xs font-semibold uppercase">
               or continue with
             </span>
-            <span className="bg-border h-0.5 flex-grow"></span>
+            <span className="bg-border h-0.5 grow"></span>
           </div>
           <GoogleOAuthBtn />
         </div>
