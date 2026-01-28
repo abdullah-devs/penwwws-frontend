@@ -1,13 +1,12 @@
 "use client";
 
-import { DataTable } from "@/components/shared/DataTable";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import { DataTable } from "@/components/shared/DataTable";
 import { GetColumns } from "@/components/shared/columns";
-import { MemberType } from "@/types/member";
-import { GroupType } from "@/types/Group";
 import AssignGroup from "@/components/shared/AssignGroup";
 import UnassignGroup from "@/components/shared/UnassignGroup";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,16 +16,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, Users } from "lucide-react";
+import { LoaderCircle as SpinnerIcon } from "lucide-react";
+
+import { getMembers } from "@/fetches/member-client";
+import { GroupType } from "@/types/Group";
+import { MemberType } from "@/types/member";
+import { StatusPlaceholder } from "@/components/shared/StatusPlaceholder";
 
 type Props = {
-  data: MemberType[];
   schoolId: string;
   group: GroupType;
 };
 
-export default function GroupTable({ group, schoolId, data }: Props) {
+export default function GroupTable({ group, schoolId }: Props) {
   const [selectedMemberIds, setSelectedMemberIds] = useState<number[]>([]);
+  const { data, isLoading, isError } = useQuery<MemberType[]>({
+    queryKey: ["members"],
+    queryFn: () => getMembers(schoolId),
+  });
 
   const columns = GetColumns((member) => (
     <DropdownMenu>
@@ -62,29 +70,45 @@ export default function GroupTable({ group, schoolId, data }: Props) {
     </DropdownMenu>
   ));
 
+  if (isLoading) {
+    return (
+      <SpinnerIcon className="text-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin" />
+    );
+  }
+  if (isError) {
+    return (
+      <StatusPlaceholder
+        title="Couldn't Fetch Members"
+        description="Something went wrong and we could not get the members, please refresh or try again later."
+        icon={<Users />}
+        variant="destructive"
+      />
+    );
+  }
   return (
-    <DataTable
-      setSelectedMemberIds={setSelectedMemberIds}
-      columns={columns}
-      data={data}
-      defaultFilteredGroupIds={[group.id]}
-      schoolId={schoolId}
-      defaultFilteredRole="STUDENT"
-    >
-      <>
-        <AssignGroup
-          schoolId={schoolId}
-          selectedMemberIds={selectedMemberIds}
-          assignGroupMode="single"
-          groupId={group.id}
-        />
-        <UnassignGroup
-          schoolId={schoolId}
-          selectedMemberIds={selectedMemberIds}
-          unassignGroupMode="single"
-          groupId={group.id}
-        />
-      </>
-    </DataTable>
+    data && (
+      <DataTable
+        setSelectedMemberIds={setSelectedMemberIds}
+        columns={columns}
+        data={data}
+        defaultFilteredGroupIds={[group.id]}
+        schoolId={schoolId}
+      >
+        <>
+          <AssignGroup
+            schoolId={schoolId}
+            selectedMemberIds={selectedMemberIds}
+            assignGroupMode="single"
+            groupId={group.id}
+          />
+          <UnassignGroup
+            schoolId={schoolId}
+            selectedMemberIds={selectedMemberIds}
+            unassignGroupMode="single"
+            groupId={group.id}
+          />
+        </>
+      </DataTable>
+    )
   );
 }

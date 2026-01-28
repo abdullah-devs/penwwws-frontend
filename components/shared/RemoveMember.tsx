@@ -1,7 +1,8 @@
 import { RefObject, useState } from "react";
-import axios from "@/lib/axiosInstance";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+
 import {
   Dialog,
   DialogTrigger,
@@ -11,12 +12,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
+import { Button } from "@/components/ui/button";
+
 import { getCookie } from "cookies-next";
-import { LoaderCircle } from "lucide-react";
-import { AxiosError } from "axios";
+import { LoaderCircle, User } from "lucide-react";
 import { ResetSelectionType } from "./DataTable";
+
+import axios from "@/lib/axiosInstance";
+import { AxiosError } from "axios";
 
 type Props = {
   schoolId: string;
@@ -68,6 +71,7 @@ export default function RemoveMember({
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTrigger className={className} asChild>
         <Button variant="destructive" size="sm">
+          <User />
           {btnText}
         </Button>
       </DialogTrigger>

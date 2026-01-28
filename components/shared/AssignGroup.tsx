@@ -1,20 +1,22 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import { useQuery } from "@tanstack/react-query";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import axios from "@/lib/axiosInstance";
-import { GroupType } from "@/types/Group";
-import { getCookie } from "cookies-next";
+import { DropdownMenuGroupItem } from "@/components/shared/DropdownMenuGroupItem";
 import { Button } from "@/components/ui/button";
 import { Users } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+
+import axios from "@/lib/axiosInstance";
 import { AxiosError } from "axios";
-import { DropdownMenuGroupItem } from "@/components/shared/DropdownMenuGroupItem";
-import { useQuery } from "@tanstack/react-query";
+import { GroupType } from "@/types/Group";
+import { getCookie } from "cookies-next";
 import { getGroups } from "@/fetches/groups";
 import clsx from "clsx";
 

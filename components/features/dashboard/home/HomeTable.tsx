@@ -1,9 +1,8 @@
 "use client";
 
-import { DataTable } from "@/components/shared/DataTable";
-import { GetColumns } from "@/components/shared/columns";
-import { MemberType } from "@/types/member";
 import { useState, useRef } from "react";
+
+import { DataTable } from "@/components/shared/DataTable";
 import AssignGroup from "@/components/shared/AssignGroup";
 import UnassignGroup from "@/components/shared/UnassignGroup";
 import RemoveMember from "@/components/shared/RemoveMember";
@@ -18,6 +17,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal } from "lucide-react";
+
+import { GetColumns } from "@/components/shared/columns";
+import { MemberType } from "@/types/member";
 
 type Props = {
   data: MemberType[];
@@ -43,12 +45,12 @@ export const HomeTable = ({ data, schoolId }: Props) => {
             schoolId={schoolId}
             selectedMemberIds={[member.id]}
             assignGroupMode="multiple"
-            className="bg-card hover:bg-secondary justify-start shadow-none"
+            className="bg-card hover:bg-secondary justify-start font-normal shadow-none"
           />
           <UnassignGroup
             schoolId={schoolId}
             selectedMemberIds={[member.id]}
-            className="bg-card hover:bg-secondary w-full justify-start shadow-none"
+            className="bg-card hover:bg-secondary w-full justify-start font-normal shadow-none"
             unassignGroupMode="multiple"
           />
         </div>
@@ -63,7 +65,7 @@ export const HomeTable = ({ data, schoolId }: Props) => {
           schoolId={schoolId}
           selectedMemberIds={[member.id]}
           resetSelectionRef={resetSelectionRef}
-          className="text-destructive bg-card hover:bg-muted w-full shadow-none"
+          className="text-destructive bg-card hover:bg-muted w-full font-normal shadow-none"
           btnText="Remove member"
         />
       </DropdownMenuContent>

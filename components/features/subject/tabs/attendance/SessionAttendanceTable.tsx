@@ -1,21 +1,6 @@
 "use client";
 
-import { TableSearch } from "@/components/shared/TableSearch";
-import { SessionType } from "@/types/session";
-import RemoveAttender from "@/components/features/subject/tabs/attendance/RemoveAttender";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { getInitials } from "@/lib/utils";
-import { SessionAttenderType } from "@/types/SessionAttenerType";
-import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
-
+import { useEffect, useState } from "react";
 import {
   ColumnFiltersState,
   FilterFn,
@@ -28,6 +13,18 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
+import { TableSearch } from "@/components/shared/TableSearch";
+import RemoveAttender from "@/components/features/subject/tabs/attendance/RemoveAttender";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -36,15 +33,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+
+import { ColumnDef } from "@tanstack/react-table";
+import { getInitials } from "@/lib/utils";
+import { SessionAttenderType } from "@/types/SessionAttenderType";
+import { SessionType } from "@/types/session";
 
 const globalFilterFn: FilterFn<SessionAttenderType> = (
   row: Row<SessionAttenderType>,

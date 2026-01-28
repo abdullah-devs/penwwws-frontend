@@ -138,7 +138,7 @@ export default function Features() {
             background={
               <Marquee
                 pauseOnHover
-                className="absolute top-10 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)]"
+                className="absolute top-10 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] [--duration:20s]"
               >
                 {files.map((file, index) => (
                   <figure
@@ -167,7 +167,7 @@ export default function Features() {
             name="Grade Management"
             description="Marks and grades management for students, with easy access to all data."
             background={
-              <div className="absolute flex h-full w-full items-center duration-200 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] hover:scale-110">
+              <div className="absolute flex h-full w-full items-center [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] duration-200 hover:scale-110">
                 <div className="absolute mx-8 flex w-full -translate-y-10 flex-col rounded-lg bg-neutral-100 py-1 lg:right-20 lg:m-0 lg:translate-x-1/2">
                   <h1 className="p-2 px-4 font-medium">John Doe's Grade</h1>
                   <div className="border-t border-neutral-300 p-2 px-4">
@@ -198,7 +198,7 @@ export default function Features() {
               <>
                 <AnimatedList
                   delay={1500}
-                  className="absolute right-2 h-[300px] w-full scale-75 border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-90"
+                  className="absolute right-2 h-[300px] w-full scale-75 border-none [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90"
                 >
                   {notifications.map((item, idx) => (
                     <Notification {...item} key={idx} />
@@ -213,7 +213,7 @@ export default function Features() {
             name="Assignment Management"
             description="Create and manage assignments with ease."
             background={
-              <div className="absolute h-full w-full duration-200 [mask-image:linear-gradient(to_top,transparent_15%,#000_100%)] hover:scale-110">
+              <div className="absolute h-full w-full [mask-image:linear-gradient(to_top,transparent_15%,#000_100%)] duration-200 hover:scale-110">
                 <div className="absolute -bottom-14 w-full">
                   <AnimatedBeamMultipleOutputDemo />
                 </div>
@@ -226,7 +226,7 @@ export default function Features() {
             name="Responsive UI"
             description="Responsive design for all devices, from mobile to desktop."
             background={
-              <div className="absolute flex h-full w-full items-center justify-center duration-200 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] hover:scale-110">
+              <div className="absolute flex h-full w-full items-center justify-center [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] duration-200 hover:scale-110">
                 <Iphone15Pro
                   className="h-72 w-64"
                   src="/images/dashboard-mobile.png"

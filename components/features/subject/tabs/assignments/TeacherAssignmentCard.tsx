@@ -1,11 +1,9 @@
-"use client";
-
 import { AssignmentType } from "@/types/AssignmentType";
-import { FileText } from "lucide-react";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import ViewSubmissions from "@/components/features/subject/tabs/assignments/ViewSubmissions";
 import DeleteAssignment from "@/components/features/subject/tabs/assignments/DeleteAssignment";
+import { FileText } from "lucide-react";
+import Link from "next/link";
 import { format } from "date-fns";
 
 type Props = {
