@@ -1,4 +1,4 @@
-@import url(https://api.fontshare.com/v2/css?f[]=plus-jakarta-sans@1&display=swap);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
@@ -8,8 +8,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-jakarta: "Plus Jakarta Sans", sans-serif;
-
+  --font-jakarta: "Inter", sans-serif;
+  --font-display: "Sora", sans-serif;
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
@@ -103,6 +103,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  body {
+    font-family: var(--font-jakarta);
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    text-rendering: optimizeLegibility;
+  }
+
   *,
   ::after,
   ::before,

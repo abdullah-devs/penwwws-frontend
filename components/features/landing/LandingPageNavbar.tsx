@@ -16,7 +16,7 @@ export default function LandingPageNavbar({
     if (autoScrolled) return;
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
 
     handleScroll();
@@ -28,51 +28,85 @@ export default function LandingPageNavbar({
   return (
     <nav
       className={clsx(
-        "fixed z-20 flex w-full items-center justify-between px-8 md:px-16 lg:px-32",
+        "fixed top-0 z-50 w-full px-4 pt-4 transition-all duration-300 md:px-8 lg:px-12",
         {
-          "bg-white p-5 duration-400": scrolled,
-          "p-10 duration-200 md:p-16": !scrolled,
+          "text-slate-900": scrolled,
+          "text-white": !scrolled,
         },
       )}
     >
-      <Link
-        href="/"
+      <div
         className={clsx(
-          "flex items-center justify-center gap-2 p-2 pl-0 duration-200 hover:opacity-80",
+          "mx-auto flex max-w-7xl items-center justify-between rounded-full border px-5 py-3 backdrop-blur-xl transition-all duration-300 md:px-6",
           {
-            "text-primary-900": scrolled,
-            "text-white": !scrolled,
+            "border-slate-200/70 bg-white/85 shadow-[0_20px_60px_rgba(15,23,42,0.08)]":
+              scrolled,
+            "border-white/10 bg-white/8 shadow-[0_20px_60px_rgba(2,6,23,0.24)]":
+              !scrolled,
           },
         )}
       >
-        <PenwwwsIcon className="size-5 md:size-8" />
-        <h1 className="font-bold md:text-2xl">Penwwws</h1>
-      </Link>
-      <div className="text-sm md:text-base">
+        {/* Logo */}
         <Link
-          className={clsx(
-            "mr-2 rounded-md px-4 py-2 font-semibold duration-200",
-            {
-              "text-primary-900 hover:opacity-80": scrolled,
-              "text-white hover:bg-white/20": !scrolled,
-            },
-          )}
-          href="/sign-in"
+          href="/"
+          className="flex items-center gap-2 rounded-full px-2 py-1 text-lg font-black tracking-tight text-inherit transition-opacity hover:opacity-80 md:text-xl"
         >
-          Sign In
+          <PenwwwsIcon className="size-6 md:size-7" />
+          <span>Penwwws</span>
         </Link>
-        <Link
-          className={clsx(
-            "rounded-md px-4 py-2 font-semibold duration-200 hover:opacity-80",
-            {
-              "bg-primary-900 text-white": scrolled,
-              "text-primary-900 bg-white": !scrolled,
-            },
-          )}
-          href="/sign-up"
-        >
-          Sign Up
-        </Link>
+
+        {/* Nav links */}
+        <div className="hidden items-center gap-8 md:flex">
+          <Link
+            className={clsx("text-sm font-medium transition-colors", {
+              "hover:text-primary-600 text-slate-600": scrolled,
+              "text-white/75 hover:text-white": !scrolled,
+            })}
+            href="#features"
+          >
+            Features
+          </Link>
+          <Link
+            className={clsx("text-sm font-medium transition-colors", {
+              "hover:text-primary-600 text-slate-600": scrolled,
+              "text-white/75 hover:text-white": !scrolled,
+            })}
+            href="#faq"
+          >
+            FAQ
+          </Link>
+          <Link
+            className={clsx("text-sm font-medium transition-colors", {
+              "hover:text-primary-600 text-slate-600": scrolled,
+              "text-white/75 hover:text-white": !scrolled,
+            })}
+            href="#results"
+          >
+            Results
+          </Link>
+        </div>
+
+        {/* Auth links */}
+        <div className="flex items-center gap-3">
+          <Link
+            className={clsx(
+              "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+              {
+                "hover:text-primary-600 text-slate-700": scrolled,
+                "text-white/80 hover:text-white": !scrolled,
+              },
+            )}
+            href="/sign-in"
+          >
+            Sign In
+          </Link>
+          <Link
+            className="from-primary-600 hover:shadow-primary-600/40 shadow-primary-600/20 rounded-full bg-gradient-to-r to-emerald-500 px-5 py-2 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+            href="/sign-up"
+          >
+            Start Free
+          </Link>
+        </div>
       </div>
     </nav>
   );
